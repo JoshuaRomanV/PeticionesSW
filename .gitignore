@@ -1,0 +1,53 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore user-specific settings and files
+.config/
+.local/
+.npm/
+.yarn/
+.vscode/
+
+# Ignore IDE-related files
+.idea/
+.classpath
+.project
+
+# Ignore user's home directory files
+../../10mo/
+../../Applications/
+../../Desktop/
+../../Documents/
+../../Downloads/
+../../Library/
+../../Movies/
+../../Music/
+../../NetBeansProjects/
+../../Pictures/
+../../Postman/
+../../Public/
