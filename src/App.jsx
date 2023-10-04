@@ -1,39 +1,45 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import AddTaskButton from "./components/AddTaskButton";
+import CancelButton from "./components/CancelButton.jsx";
+import { Alert, Modal } from "antd";
+import TextArea from "antd/es/input/TextArea";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [task, setTask] = useState("")
+    const [tasks, setTasks] = useState([])
+    const [isEmpty, setIsEmpty] = useState(false)
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        if (task != "") {
+            setTasks([...tasks, task])
+            setTask("")
+            setIsEmpty(false)
+            setIsModalOpen(false);
+        } else {
+            setIsEmpty(true)
+        }
+    };
+
+    const handleCancel = () => {
+        setIsEmpty(false)
+        setIsModalOpen(false);
+        console.log(tasks)
+    };
 
     return (
         <>
-            <div>
-                <a href="https://vitejs.dev">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-            <AddTaskButton />
+            <AddTaskButton onClick={showModal} />
+            <Modal title="Agregar tarea" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                <TextArea onChange={event => setTask(event.target.value)} value={task} />
+                <p></p>
+                {isEmpty && (<Alert message="No es posible agregar tareas vacías" type="error" closable />)}
+            </Modal>
         </>
     );
 }
