@@ -4,6 +4,7 @@ import AddTaskButton from "./components/AddTaskButton";
 import CancelButton from "./components/CancelButton.jsx";
 import { Alert, Button, DatePicker, Form, Input, Modal, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
+import ViewListTask from "./pages/ViewListTask";
 
 function App() {
     const [tasks, setTasks] = useState([])
@@ -85,6 +86,7 @@ function App() {
                     </Form.Item>
                 </Form>
             </Modal>
+            <ViewListTask dataTask={tasks}/>
         </>
     );
 }
