@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./App.css";
 import AddTaskButton from "./components/AddTaskButton";
-import CancelButton from "./components/CancelButton.jsx";
+// import CancelButton from "./components/CancelButton.jsx";
 import ContadorTa from "./Components/ContadorTa";
-import { Alert, Button, DatePicker, Form, Input, Modal, Space } from "antd";
+import { Button, DatePicker, Form, Input, Modal, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import ViewListTask from "./pages/ViewListTask";
 
 function App() {
-    const [tasks, setTasks] = useState([])
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [form] = Form.useForm()
+    const [tasks, setTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [form] = Form.useForm();
 
     const showModal = () => {
         setIsModalOpen(true);
@@ -18,37 +18,41 @@ function App() {
 
     const handleCancel = () => {
         setIsModalOpen(false);
-        console.log(tasks)
-        
+        console.log(tasks);
     };
 
     const onFinish = (values) => {
-        console.log('Success:', values);
-        
+        console.log("Success:", values);
+
         const task = {
             title: values.title,
             description: values.description,
             date: values.date,
-            completed: false
-        }
-        setTasks([...tasks, task])
-        setIsModalOpen(false)
-        form.resetFields()
+            completed: false,
+        };
+        setTasks([...tasks, task]);
+        setIsModalOpen(false);
+        form.resetFields();
     };
 
     const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
+        console.log("Failed:", errorInfo);
     };
 
     const onReset = () => {
-        form.resetFields()
-    }
+        form.resetFields();
+    };
 
     return (
         <>
-           <ContadorTa tasks={tasks}/>
+            <ContadorTa tasks={tasks} />
             <AddTaskButton onClick={showModal} />
-            <Modal title="Agregar tarea" open={isModalOpen} onCancel={handleCancel} footer={false}>
+            <Modal
+                title="Agregar tarea"
+                open={isModalOpen}
+                onCancel={handleCancel}
+                footer={false}
+            >
                 <Form
                     initialValues={{ remember: true }}
                     layout="vertical"
@@ -60,21 +64,39 @@ function App() {
                     <Form.Item
                         label="Titulo"
                         name="title"
-                        rules={[{ required: true, message: 'Por favor asigna un titulo a la tarea!' }]}
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna un titulo a la tarea!",
+                            },
+                        ]}
                     >
                         <Input />
                     </Form.Item>
                     <Form.Item
                         label="Descripción"
                         name="description"
-                        rules={[{ required: true, message: 'Por favor asigna una descripción a la tarea!' }]}
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna una descripción a la tarea!",
+                            },
+                        ]}
                     >
                         <TextArea />
                     </Form.Item>
                     <Form.Item
                         label="Fecha de entrega"
                         name="date"
-                        rules={[{ required: true, message: 'Por favor asigna una fecha de entrega a la tarea!' }]}
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna una fecha de entrega a la tarea!",
+                            },
+                        ]}
                     >
                         <DatePicker />
                     </Form.Item>
@@ -90,7 +112,7 @@ function App() {
                     </Form.Item>
                 </Form>
             </Modal>
-            <ViewListTask dataTask={tasks}/>
+            <ViewListTask dataTask={tasks} />
         </>
     );
 }
