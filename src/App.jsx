@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import AddTaskButton from "./components/AddTaskButton";
 import CancelButton from "./components/CancelButton.jsx";
+import ContadorTa from "./Components/ContadorTa";
 import { Alert, Button, DatePicker, Form, Input, Modal, Space } from "antd";
 import TextArea from "antd/es/input/TextArea";
 
@@ -17,10 +18,12 @@ function App() {
     const handleCancel = () => {
         setIsModalOpen(false);
         console.log(tasks)
+        
     };
 
     const onFinish = (values) => {
         console.log('Success:', values);
+        
         const task = {
             title: values.title,
             description: values.description,
@@ -42,6 +45,7 @@ function App() {
 
     return (
         <>
+           <ContadorTa tasks={tasks}/>
             <AddTaskButton onClick={showModal} />
             <Modal title="Agregar tarea" open={isModalOpen} onCancel={handleCancel} footer={false}>
                 <Form
