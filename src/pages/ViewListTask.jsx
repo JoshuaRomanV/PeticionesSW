@@ -4,7 +4,6 @@ import "./StyleListTask.css";
 import { AiOutlineSearch, AiOutlineCheckCircle } from "react-icons/ai";
 
 import { TiDeleteOutline } from "react-icons/ti";
-import toast from "react-hot-toast";
 
 // ... Importaciones y código anterior
 
@@ -19,9 +18,6 @@ export default function ViewListTask(props) {
             if (isNewTaskAdded) {
                 const newTask = props.dataTask.slice(-1)[0];
                 setDataTask(props.dataTask);
-                toast.success(
-                    `Tarea "${newTask.title}" agregada correctamente!`
-                );
             }
         }
 
@@ -83,7 +79,7 @@ export default function ViewListTask(props) {
                             <p>{task.description}</p>
                             <p>
                                 Fecha de entrega:{" "}
-                                {task.date?.format("YYYY-MM-DD")}
+                                {task.date}
                             </p>
                             <Space>
                                 <Button
