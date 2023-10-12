@@ -1,39 +1,118 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import AddTaskButton from "./components/AddTaskButton";
+// import CancelButton from "./components/CancelButton.jsx";
+import ContadorTa from "./Components/ContadorTa";
+import { Button, DatePicker, Form, Input, Modal, Space } from "antd";
+import TextArea from "antd/es/input/TextArea";
+import ViewListTask from "./pages/ViewListTask";
 
 function App() {
-    const [count, setCount] = useState(0);
+    const [tasks, setTasks] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [form] = Form.useForm();
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+        console.log(tasks);
+    };
+
+    const onFinish = (values) => {
+        console.log("Success:", values);
+
+        const task = {
+            title: values.title,
+            description: values.description,
+            date: values.date,
+            completed: false,
+        };
+        setTasks([...tasks, task]);
+        setIsModalOpen(false);
+        form.resetFields();
+    };
+
+    const onFinishFailed = (errorInfo) => {
+        console.log("Failed:", errorInfo);
+    };
+
+    const onReset = () => {
+        form.resetFields();
+    };
 
     return (
         <>
-            <div>
-                <a href="https://vitejs.dev">
-                    <img src={viteLogo} className="logo" alt="Vite logo" />
-                </a>
-                <a href="https://react.dev">
-                    <img
-                        src={reactLogo}
-                        className="logo react"
-                        alt="React logo"
-                    />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
-                </button>
-                <p>
-                    Edit <code>src/App.jsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
-            </p>
-            <AddTaskButton />
+            <ContadorTa tasks={tasks} />
+            <AddTaskButton onClick={showModal} />
+            <Modal
+                title="Agregar tarea"
+                open={isModalOpen}
+                onCancel={handleCancel}
+                footer={false}
+            >
+                <Form
+                    initialValues={{ remember: true }}
+                    layout="vertical"
+                    onFinish={onFinish}
+                    onFinishFailed={onFinishFailed}
+                    form={form}
+                    autoComplete="off"
+                >
+                    <Form.Item
+                        label="Titulo"
+                        name="title"
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna un titulo a la tarea!",
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        label="Descripción"
+                        name="description"
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna una descripción a la tarea!",
+                            },
+                        ]}
+                    >
+                        <TextArea />
+                    </Form.Item>
+                    <Form.Item
+                        label="Fecha de entrega"
+                        name="date"
+                        rules={[
+                            {
+                                required: true,
+                                message:
+                                    "Por favor asigna una fecha de entrega a la tarea!",
+                            },
+                        ]}
+                    >
+                        <DatePicker />
+                    </Form.Item>
+                    <Form.Item>
+                        <Space>
+                            <Button type="primary" htmlType="submit">
+                                Guardar
+                            </Button>
+                            <Button htmlType="reset" onClick={onReset}>
+                                Limpiar
+                            </Button>
+                        </Space>
+                    </Form.Item>
+                </Form>
+            </Modal>
+            <ViewListTask dataTask={tasks} />
         </>
     );
 }
