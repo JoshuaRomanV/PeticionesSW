@@ -1,0 +1,39 @@
+.title{
+    color: white;
+    font-size: 35px;
+}
+.contentTask{
+    background-color: black;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    margin-top: 20px;
+}
+.alingCard{
+    justify-content: center;
+    align-items: center;
+}
+.cardTask{
+    background-color: #f3ecec;
+    margin: 20px;
+    min-width: 300px;
+    min-height: 200px;
+    border-radius: 10px;
+}
+.titleTask{
+    font-size: 25px;
+    font-weight: bold;
+    margin: 0;
+}
+.imgNoData{
+    width: 200px;
+    max-height: 200px;
+    border-radius: 10px;
+}
+.btnTask{
+    align-items:center ;
+    display: flex;
+    justify-content: center;
+}
