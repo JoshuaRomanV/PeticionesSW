@@ -16,7 +16,6 @@ export default function ViewListTask(props) {
     useEffect(() => {
         function getTask() {
             if (isNewTaskAdded) {
-                const newTask = props.dataTask.slice(-1)[0];
                 setDataTask(props.dataTask);
             }
         }
@@ -77,10 +76,7 @@ export default function ViewListTask(props) {
                             <p className="titleTask">{task.title}</p>
                             <Divider />
                             <p>{task.description}</p>
-                            <p>
-                                Fecha de entrega:{" "}
-                                {task.date}
-                            </p>
+                            <p>Fecha de entrega: {task.date}</p>
                             <Space>
                                 <Button
                                     className="btnTask"
