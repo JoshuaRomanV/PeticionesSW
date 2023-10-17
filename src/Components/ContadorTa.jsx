@@ -2,21 +2,18 @@ import "./ContadorTa.css";
 import { useState, useEffect } from "react";
 
 const ContadorTa = ({ tasks }) => {
-    const completedTasks = tasks.filter((task) => task.completed === true);
-    const totalCount = tasks.length;
-
-    const [counter, setCounter] = useState(completedTasks.length);
+    const [completedTaskCount, setCompletedTaskCount] = useState(0);
 
     useEffect(() => {
-        setCounter(completedTasks.length);
+        // Calcular el número de tareas completadas
+        const count = tasks.filter(task => task.completed).length;
+        setCompletedTaskCount(count);
     }, [tasks]);
-
-    console.log("counter", counter);
 
     return (
         <div className="Texcontador">
             <p>
-                Has Completado {counter} de {totalCount} tareas
+                Has Completado {completedTaskCount} de {tasks.length} tareas
             </p>
         </div>
     );

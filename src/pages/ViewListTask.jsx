@@ -1,11 +1,9 @@
+import React from "react";
 import { Divider, Space, Card, Row, Col, Button, Image, Input } from "antd";
 import { useEffect, useState } from "react";
 import "./StyleListTask.css";
 import { AiOutlineSearch, AiOutlineCheckCircle } from "react-icons/ai";
-
 import { TiDeleteOutline } from "react-icons/ti";
-
-// ... Importaciones y código anterior
 
 export default function ViewListTask(props) {
     const [dataTask, setDataTask] = useState([]);
@@ -32,6 +30,11 @@ export default function ViewListTask(props) {
         checkData();
     }, [props.dataTask, isNewTaskAdded]);
 
+    const handleDeleteTask = (index) => {
+        props.handleDeleteTask(index);
+        window.location.reload(); // Recargar la página después de borrar la tarea
+    };
+
     const filteredData = dataTask.filter((task) =>
         task.title.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -42,8 +45,8 @@ export default function ViewListTask(props) {
                 placeholder="Buscar por título"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
-                prefix={<AiOutlineSearch />} // Agregar un ícono de búsqueda
-                style={{ width: "60%", height: 50 }} // Ajustar el ancho del Input
+                prefix={<AiOutlineSearch />}
+                style={{ width: "60%", height: 50 }}
             />
 
             <Col span={24}>
@@ -59,7 +62,7 @@ export default function ViewListTask(props) {
                     />
                 </Col>
             ) : null}
-            {filteredData.length === 0 ? ( // Agregar esta condición
+            {filteredData.length === 0 ? (
                 <Col span={24}>
                     <h2>Sin tareas encontradas</h2>
                 </Col>
@@ -84,18 +87,24 @@ export default function ViewListTask(props) {
                                     shape="circle"
                                     size="large"
                                     danger
+                                    onClick={() => handleDeleteTask(index)}
                                 >
                                     <TiDeleteOutline size={40} />
                                 </Button>
-                                <Button
-                                    className="btnTask"
-                                    type="primary"
-                                    shape="circle"
-                                    size="large"
-                                    color="blue"
-                                >
-                                    <AiOutlineCheckCircle size={40} />
-                                </Button>
+                                {!task.completed && (
+                                    <Button
+                                        className="btnTask"
+                                        type="primary"
+                                        shape="circle"
+                                        size="large"
+                                        color="blue"
+                                        onClick={() =>
+                                            props.handleCompleteTask(index)
+                                        }
+                                    >
+                                        <AiOutlineCheckCircle size={40} />
+                                    </Button>
+                                )}
                             </Space>
                         </Card>
                     </Col>
