@@ -1,30 +1,8 @@
-# FILEPATH: <filepath>
+Titulo
+(Titulo del error)
 
-def create_gitlab_bug_report(title, description, labels):
-"""
-Crea un template para el bug provisto por el titulo, descripcion y etiquetas
-
-    Args:
-    - title (str): El titulo del bug.
-    - description (str): De que trata el bug, notas describiendo el error
-    - labels (list of str): The labels to apply to the bug report.
-
-    Returns:
-    - str: El template de gitlab.
-    """
-    template = f"""## Resumen del Bug
-
-    {title}
-
-    ## Descripcion del bug
-
-    {description}
-
-    ## Etiquetas
-
-    {', '.join(labels)}
-    """
-    return template
+Resumen
+(Resuma de manera concisa el error encontrado)
 
 Pasos para reproducir
 (Cómo se puede reproducir el problema, esto es muy importante)
