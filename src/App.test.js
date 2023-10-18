@@ -1,32 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { act } from "react-dom/test-utils";
-import App from "./App.jsx";
-import { Toaster } from "react-hot-toast";
+import { render, fireEvent } from "@testing-library/react";
+import AddTaskButton from "./Components/AddTaskButton";
 
-let container;
-
-beforeEach(() => {
-    container = document.createElement("div");
-    document.body.appendChild(container);
-});
-
-afterEach(() => {
-    document.body.removeChild(container);
-    container = null;
-});
-
-it("renders the App component", () => {
-    act(() => {
-        ReactDOM.render(
-            <React.StrictMode>
-                <Toaster />
-                <App />
-            </React.StrictMode>,
-            container
-        );
+describe("AddTaskButton", () => {
+    it("calls onClick prop when clicked", () => {
+        const onClick = jest.fn();
+        const { getByText } = render(<AddTaskButton onClick={onClick} />);
+        const button = getByText("Agregar Tarea");
+        fireEvent.click(button);
+        expect(onClick).toHaveBeenCalled();
     });
-
-    const app = container.querySelector(".App");
-    expect(app).toBeTruthy();
 });
