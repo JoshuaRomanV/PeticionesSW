@@ -50,7 +50,9 @@
     "jest": {
         "moduleNameMapper": {
             "\\.(css|less|scss|sass)$": "identity-obj-proxy",
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy"
+            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "identity-obj-proxy",
+            "^antd$": "<rootDir>/node_modules/antd",
+            "^@ant-design/icons(.*)$": "<rootDir>/node_modules/@ant-design/icons$1"
         }
     }
 }
