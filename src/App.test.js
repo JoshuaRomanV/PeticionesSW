@@ -16,7 +16,7 @@ afterEach(() => {
     container = null;
 });
 
-it("renders with or without a name", () => {
+it("renders the App component", () => {
     act(() => {
         ReactDOM.render(
             <React.StrictMode>
