@@ -18,7 +18,7 @@ install-dependencies:
 test-apps:
     stage: test
     variables:
-        CHROME_BIN: google-chrome
+        CHROME_BIN: google-chrome --no-sandbox
     dependencies:
         - install-dependencies
     before_script:
