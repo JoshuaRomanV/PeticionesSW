@@ -71,11 +71,9 @@ Pruebas y depuración: Una vez que se complete la etapa de desarrollo inicial, l
        _En caso de querer cancelar la tarea dar click en el incono de la "X" para cerrar_
 
 2. **FUNCIONES ADICIONALES**
-3. Completa las tareas marcándolas como completadas con el icono de la palomita azul.
-4. Elimina tareas haciendo clic en el icono rojo de eliminación con la "X".
-5. Utiliza la barra de búsqueda para encontrar tareas específicas con el titulo.
+   1.Completa las tareas marcándolas como completadas con el icono de la palomita azul. 2. Elimina tareas haciendo clic en el icono rojo de eliminación con la "X". 3. Utiliza la barra de búsqueda para encontrar tareas específicas con el titulo.
 
-6. **DESCARGAR LA APLICACIÓN DE MANERA NATIVA**
+3. **DESCARGAR LA APLICACIÓN DE MANERA NATIVA**
    La aplicación cuenta con un archivo "manifest.json", el cual permite descargar la aplicación de manera nativa, estas aplicaciones nativas suelen ser más rápidas y eficientes en términos de rendimiento en comparación con las aplicaciones web o híbridas. Están diseñadas y compiladas específicamente para funcionar en el sistema operativo y el hardware de un dispositivo, lo que permite un rendimiento más suave y rápido. Para poder tener la aplicación de manera nativa realiza lo siguiente:
 
     1. Buscar en la barra del navegador donde se encuentra la url un icono de descarga.
