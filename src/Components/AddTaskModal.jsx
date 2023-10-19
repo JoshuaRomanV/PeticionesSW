@@ -1,8 +1,6 @@
-import React from 'react'
-import { Button, DatePicker, Form, Input, Modal, Space } from 'antd'
-import TextArea from 'antd/es/input/TextArea';
+import { Button, DatePicker, Form, Input, Modal, Space } from "antd";
+import TextArea from "antd/es/input/TextArea";
 import toast from "react-hot-toast";
-
 
 export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
     const [form] = Form.useForm();
@@ -13,16 +11,13 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
         const task = {
             title: values.title,
             description: values.description,
-            date: values.date.format('YYYY-MM-DD'),
+            date: values.date.format("YYYY-MM-DD"),
             completed: false,
         };
 
-        addTask(task)
+        addTask(task);
 
-
-        toast.success(
-            `Tarea "${values.title}" agregada correctamente!`
-        );
+        toast.success(`Tarea "${values.title}" agregada correctamente!`);
 
         form.resetFields();
     };
@@ -56,8 +51,7 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
                     rules={[
                         {
                             required: true,
-                            message:
-                                "Por favor asigna un titulo a la tarea!",
+                            message: "Por favor asigna un titulo a la tarea!",
                         },
                     ]}
                 >
@@ -101,5 +95,5 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
                 </Form.Item>
             </Form>
         </Modal>
-    )
+    );
 }
