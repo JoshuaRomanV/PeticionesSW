@@ -1,0 +1,71 @@
+{
+  "name": "app-de-notas-progressivas",
+  "short_name": "App de notas",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#242424",
+  "theme_color": "#070707",
+  "description": "App de notas progresivas",
+  "lang": "es",
+  "orientation": "portrait",
+  "serviceworker": {
+    "src": "/public/sw.js"
+  },
+  "icons": [
+    {
+      "src": "/public/img/capitan.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/ciudad.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/cofre.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/frio.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/lapiz.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/lista-de-verificacion.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/musica.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/noche.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/paisaje.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/perritos.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/public/img/publicalo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
