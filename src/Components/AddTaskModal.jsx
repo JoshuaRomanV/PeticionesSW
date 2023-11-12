@@ -10,9 +10,7 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
 
         const task = {
             title: values.title,
-            description: values.description,
-            date: values.date.format("YYYY-MM-DD"),
-            completed: false,
+            text: values.text, // Cambiar "description" a "text"
         };
 
         addTask(task);
@@ -33,7 +31,7 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
     return (
         <Modal
             title="Agregar tarea"
-            open={isModalOpen}
+            visible={isModalOpen} // Cambiar "open" a "visible"
             onCancel={handleCancel}
             footer={false}
         >
@@ -46,42 +44,29 @@ export default function AddTaskModal({ isModalOpen, handleCancel, addTask }) {
                 autoComplete="off"
             >
                 <Form.Item
-                    label="Titulo"
+                    label="Título" // Cambiar "Titulo" a "Título"
                     name="title"
                     rules={[
                         {
                             required: true,
-                            message: "Por favor asigna un titulo a la tarea!",
+                            message: "Por favor asigna un título a la tarea!",
                         },
                     ]}
                 >
                     <Input />
                 </Form.Item>
                 <Form.Item
-                    label="Descripción"
-                    name="description"
+                    label="Texto" // Cambiar "Descripción" a "Texto"
+                    name="text" // Cambiar "description" a "text"
                     rules={[
                         {
                             required: true,
                             message:
-                                "Por favor asigna una descripción a la tarea!",
+                                "Por favor asigna un texto a la tarea!",
                         },
                     ]}
                 >
                     <TextArea />
-                </Form.Item>
-                <Form.Item
-                    label="Fecha de entrega"
-                    name="date"
-                    rules={[
-                        {
-                            required: true,
-                            message:
-                                "Por favor asigna una fecha de entrega a la tarea!",
-                        },
-                    ]}
-                >
-                    <DatePicker />
                 </Form.Item>
                 <Form.Item>
                     <Space>
